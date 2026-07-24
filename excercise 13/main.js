@@ -1,7 +1,9 @@
 
 
 let i= 5;
-while(i > 0 ){
-    console.log( "literance", +i );
+
+while( i > 0 ){
+
+    console.log( "literance", + i );
     i--;
 };
