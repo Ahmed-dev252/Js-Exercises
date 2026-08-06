@@ -1,48 +1,21 @@
 
-// blocking
-function getUserDate(){
-    
-    const startTime = Date.now();
-    while (Date.now ()- startTime < 2000 ){}
-    return { id: 236, name: "joon", city:"afgooye"};
-   
-}
-console.log("start Fetch User Date");
 
+function  fetchUserData(){
+    return new Promise (( resolve, reject) => {
+        setTimeout(() => {
 
-const user= getUserDate();
+            const success = true;
 
-console.log(user);
+            if (success){
+                resolve({id:2345, name: "jaamac", city: "bosaso"});
 
-console.log("This message is blocked until the delay is complete.");
-
-
-
-
-
-
-// non-blocking
-function userDate(Callback){
-
-     setTimeout(()=> {
-        let user = { id:242, name: "mohamed", city: "marko" }
-
-        Callback ( user);
-    }, 2000);
+            }else {
+                reject ( "Failed to fetch user data" )
+            }
+        }, 2000);
+    });
 }
 
-console.log("This message shows up immediately.");
-
-userDate (function(user){
-    console.log("waa kanaa xogta", user)
-})
-
-console.log("This message is not blocked and runs immediately.");
-
-
-
-//  setTimeout(()=> {
-//         let user = { id:242, name: "mohamed", city: "marko" }
-
-//         console.log("afer 3second", usr);
-//     }, 3000)
+fetchUserData()
+.then((Data)=> console.log(Data))
+.catch((err)=>console.log("err:", err));
